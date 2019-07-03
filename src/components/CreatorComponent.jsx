@@ -17,5 +17,5 @@ export class CreatorComponent extends React.Component {
                 <div className="ui input"><Input type="text" placeholder="Search..." /></div>
             </Form>
         );
-    }s
+    }
 }
