@@ -1,0 +1,22 @@
+.inline.fields.operation>.three.wide.field {
+    padding: 0 !important;
+}
+
+th.operator {
+    border-left: none !important;
+    border-right: none !important;
+}
+
+td.operator {
+    border-left: none !important;
+    border-right: none !important;
+    padding: 0 !important;
+}
+
+th.input {
+    border-left: none !important;
+}
+
+td.input {
+    border-left: none !important;
+}
