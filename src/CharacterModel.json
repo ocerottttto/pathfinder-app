@@ -1,0 +1,119 @@
+{
+  "id": "",
+  "name": "",
+  "player": "",
+  "campaign": "",
+  "xpRate": "",
+  "gender": "",
+  "alignment": "",
+  "race": "",
+  "class": {
+    "name": "",
+    "archetypes": [],
+    "hd": "",
+    "startWealth": "",
+    "alligment": []
+  },
+  "level": "",
+  "currentXp": "0",
+  "nextLvlXp": "",
+  "age": "",
+  "ageGroup": "",
+  "height": "",
+  "weight": "",
+  "size": "",
+  "hometown": "",
+  "deity": "",
+  "abilities": {
+    "str": {
+      "score": 10,
+      "mod": 0,
+      "bonus": 0,
+      "penalty": 0
+    },
+    "dex": {
+      "score": 10,
+      "mod": 0,
+      "bonus": 0,
+      "penalty": 0
+    },
+    "cos": {
+      "score": 10,
+      "mod": 0,
+      "bonus": 0,
+      "penalty": 0
+    },
+    "int": {
+      "score": 10,
+      "mod": 0,
+      "bonus": 0,
+      "penalty": 0
+    },
+    "wis": {
+      "score": 10,
+      "mod": 0,
+      "bonus": 0,
+      "penalty": 0
+    },
+    "cha": {
+      "score": 10,
+      "mod": 0,
+      "bonus": 0,
+      "penalty": 0
+    }
+  },
+  "skills": {
+    "acrobatics": "",
+    "appraise": "",
+    "climb": "",
+    "craft": "",
+    "diplomacy": "",
+    "disableDevice": "",
+    "disguise": "",
+    "escapeArtist": "",
+    "fly": "",
+    "handleAnimal": "",
+    "heal": "",
+    "intimidate": "",
+    "knowArcana": "",
+    "knowDungeon": "",
+    "knowEngine": "",
+    "knowGeo": "",
+    "knowHistory": "",
+    "knowLocal": "",
+    "knowNature": "",
+    "knowNobility": "",
+    "knowPlanes": "",
+    "knowReligion": "",
+    "linguistics": "",
+    "perception": "",
+    "perform": "",
+    "profession": "",
+    "ride": "",
+    "senseMotive": "",
+    "sleightHand": "",
+    "spellcraft": "",
+    "stealth": "",
+    "survival": "",
+    "swim": "",
+    "useMagicDevice": ""
+  },
+  "hp": {
+    "current": "",
+    "maxHp": "",
+    "nonLethalDmg": ""
+  },
+  "dr": "",
+  "hd": "",
+  "initiative": {
+    "value": "",
+    "misc": ""
+  },
+  "speed": {
+    "base": "",
+    "withArmor": "",
+    "swim": "",
+    "fly": "",
+    "climb": ""
+  }
+}

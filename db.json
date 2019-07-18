@@ -1,0 +1,123 @@
+{
+  "characters": [
+    {
+      "id": 1,
+      "name": "Pippo",
+      "player": "Paolo",
+      "campaign": "Rise of the Runelords",
+      "xpRate": "n",
+      "gender": "m",
+      "alignment": "tn",
+      "race": "Dwarf",
+      "class": {
+        "name": "fighter",
+        "archetypes": [],
+        "hd": "",
+        "startWealth": "",
+        "alligment": []
+      },
+      "level": 1,
+      "currentXp": 0,
+      "nextLvlXp": 1000,
+      "age": 30,
+      "ageGroup": "m",
+      "height": "",
+      "weight": "",
+      "size": "m",
+      "hometown": "",
+      "deity": "",
+      "abilities": {
+        "str": {
+          "score": 0,
+          "mod": 0,
+          "bonus": 0,
+          "penalty": 0
+        },
+        "dex": {
+          "score": 0,
+          "mod": 0,
+          "bonus": 0,
+          "penalty": 0
+        },
+        "cos": {
+          "score": 0,
+          "mod": 0,
+          "bonus": 0,
+          "penalty": 0
+        },
+        "int": {
+          "score": 0,
+          "mod": 0,
+          "bonus": 0,
+          "penalty": 0
+        },
+        "wis": {
+          "score": 0,
+          "mod": 0,
+          "bonus": 0,
+          "penalty": 0
+        },
+        "cha": {
+          "score": 0,
+          "mod": 0,
+          "bonus": 0,
+          "penalty": 0
+        }
+      },
+      "skills": {
+        "acrobatics": "",
+        "appraise": "",
+        "climb": "",
+        "craft": "",
+        "diplomacy": "",
+        "disableDevice": "",
+        "disguise": "",
+        "escapeArtist": "",
+        "fly": "",
+        "handleAnimal": "",
+        "heal": "",
+        "intimidate": "",
+        "knowArcana": "",
+        "knowDungeon": "",
+        "knowEngine": "",
+        "knowGeo": "",
+        "knowHistory": "",
+        "knowLocal": "",
+        "knowNature": "",
+        "knowNobility": "",
+        "knowPlanes": "",
+        "knowReligion": "",
+        "linguistics": "",
+        "perception": "",
+        "perform": "",
+        "profession": "",
+        "ride": "",
+        "senseMotive": "",
+        "sleightHand": "",
+        "spellcraft": "",
+        "stealth": "",
+        "survival": "",
+        "swim": "",
+        "useMagicDevice": ""
+      },
+      "hp": {
+        "current": 10,
+        "maxHp": 10,
+        "nonLethalDmg": 0
+      },
+      "dr": 0,
+      "hd": "d6",
+      "initiative": {
+        "value": 0,
+        "misc": 0
+      },
+      "speed": {
+        "base": 30,
+        "withArmor": 30,
+        "swim": "",
+        "fly": "",
+        "climb": ""
+      }
+    }
+  ]
+}
