@@ -10,7 +10,6 @@
   "class": {
     "name": "",
     "archetypes": [],
-    "hd": "",
     "startWealth": "",
     "alligment": []
   },
@@ -63,40 +62,210 @@
     }
   },
   "skills": {
-    "acrobatics": "",
-    "appraise": "",
-    "climb": "",
-    "craft": "",
-    "diplomacy": "",
-    "disableDevice": "",
-    "disguise": "",
-    "escapeArtist": "",
-    "fly": "",
-    "handleAnimal": "",
-    "heal": "",
-    "intimidate": "",
-    "knowArcana": "",
-    "knowDungeon": "",
-    "knowEngine": "",
-    "knowGeo": "",
-    "knowHistory": "",
-    "knowLocal": "",
-    "knowNature": "",
-    "knowNobility": "",
-    "knowPlanes": "",
-    "knowReligion": "",
-    "linguistics": "",
-    "perception": "",
-    "perform": "",
-    "profession": "",
-    "ride": "",
-    "senseMotive": "",
-    "sleightHand": "",
-    "spellcraft": "",
-    "stealth": "",
-    "survival": "",
-    "swim": "",
-    "useMagicDevice": ""
+    "acrobatics": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "appraise": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "climb": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "craft": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "diplomacy": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "disableDevice": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "disguise": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "escapeArtist": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "fly": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "handleAnimal": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "heal": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "intimidate": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowArcana": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowDungeon": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowEngine": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowGeo": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowHistory": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowLocal": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowNature": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowNobility": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowPlanes": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "knowReligion": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "linguistics": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "perception": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "perform": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "profession": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "ride": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "senseMotive": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "sleightHand": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "spellcraft": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "stealth": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "survival": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "swim": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    },
+    "useMagicDevice": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": true
+    }
   },
   "hp": {
     "current": "",

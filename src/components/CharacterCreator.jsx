@@ -17,8 +17,11 @@ export class CharacterCreator extends React.Component {
   }
 
   handleChange = (name, value) => {
-      this.setState({ character: { [name]: value } });
-      console.log("sadasd");
+      var properties = { ...this.state };
+      properties[name] = { [name]: value };
+      console.log(properties);
+      this.setState(properties);
+      this.forceUpdate();
   };
 
   handleSubmit = () => {
@@ -28,10 +31,9 @@ export class CharacterCreator extends React.Component {
   };
 
   render() {
-    console.log(this.state.character);
+    console.log(this.state);
     return (
       <Segment padded="very" attached>
-        <p>{this.state.character.abilities.str.mod}</p>
         <Form onSubmit={this.handleSubmit}>
           <Header as="h3" dividing>
             Basic Informations
@@ -53,10 +55,11 @@ export class CharacterCreator extends React.Component {
                 <BaseStatsComponent character={this.state.character} />
               </Grid.Column>
               <Grid.Column width="9">
-                {/* <SkillsBox
+                <SkillsBox
                   sendChange={this.handleChange}
-                  character={this.state.character}
-                /> */}
+                  skills={this.state.character.skills}
+                  abilities={this.state.character.abilities}
+                />
               </Grid.Column>
             </Grid.Row>
           </Grid>
