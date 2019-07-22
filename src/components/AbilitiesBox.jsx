@@ -20,15 +20,17 @@ export class AbilitiesBox extends React.Component {
 
   handleChange = event => {
     let names = event.target.name.split("-");
-    var property = { ...this.state[names[0]] };
-    property[names[1]] = Number.parseInt(event.target.value);
-    this.setState({ [names[0]]: property });
+    var properties = { ...this.state };
+    properties[names[0]][names[1]] = Number.parseInt(event.target.value);
+    this.setState(properties);
+    this.props.sendChange("abilities", this.state);
   };
 
   render() {
+    //console.log(this.state);
     return (
       <Segment basic>
-        <Table definition compact basic="very" celled collapsing>
+        <Table definition compact="very" basic="very" celled collapsing>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell width={4} />
@@ -67,11 +69,13 @@ class Row extends React.Component {
 
   handleChange = event => {
     this.props.sendChange(event);
+    
   };
 
   calculateMod(score) {
     let mod = (score - 10) / 2;
-    return mod > 0 ? mod | 0 : mod.toFixed(0);
+    mod = mod > 0 ? mod | 0 : mod.toFixed(0);
+    return isNaN(mod) ? "" : mod;
   }
 
   render() {
@@ -83,7 +87,7 @@ class Row extends React.Component {
           <Form.Input
             fluid
             name={value + "-score"}
-            defaultValue={this.props.abilities[value].score}
+            defaultValue={this.props.abilities[value].score + ""}
             onChange={this.handleChange}
           />
         </Table.Cell>
