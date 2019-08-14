@@ -6,15 +6,34 @@
   "xpRate": "",
   "gender": "",
   "alignment": "",
-  "race": "",
+  "race": {
+    "raceTraits": []
+  },
   "class": {
     "name": "",
+    "desc": "",
+    "hd": "",
     "archetypes": [],
-    "startWealth": "",
-    "alligment": []
+    "classSkills": [],
+    "proficiencies": [],
+    "startWealth": 0,
+    "alligment": [],
+    "stats": [
+      {
+        "BAB": 0,
+        "baseSave": {
+          "fortitude": 0,
+          "reflex": 0,
+          "will": 0
+        },
+        "special": []
+      }
+    ]
   },
-  "level": "",
-  "currentXp": "0",
+  "traits": [],
+  "feats": [],
+  "level": 1,
+  "currentXp": 0,
   "nextLvlXp": "",
   "age": "",
   "ageGroup": "",
@@ -27,38 +46,38 @@
     "str": {
       "score": 10,
       "mod": 0,
-      "bonus": 0,
-      "penalty": 0
+      "base": 10,
+      "misc": 0
     },
     "dex": {
       "score": 10,
       "mod": 0,
-      "bonus": 0,
-      "penalty": 0
+      "base": 10,
+      "misc": 0
     },
-    "cos": {
+    "con": {
       "score": 10,
       "mod": 0,
-      "bonus": 0,
-      "penalty": 0
+      "base": 10,
+      "misc": 0
     },
     "int": {
       "score": 10,
       "mod": 0,
-      "bonus": 0,
-      "penalty": 0
+      "base": 10,
+      "misc": 0
     },
     "wis": {
       "score": 10,
       "mod": 0,
-      "bonus": 0,
-      "penalty": 0
+      "base": 10,
+      "misc": 0
     },
     "cha": {
       "score": 10,
       "mod": 0,
-      "bonus": 0,
-      "penalty": 0
+      "base": 10,
+      "misc": 0
     }
   },
   "skills": {
@@ -66,217 +85,236 @@
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "appraise": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
+    },
+    "bluff": {
+      "score": 0,
+      "ranks": 0,
+      "misc": 0,
+      "classSkill": false
     },
     "climb": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "craft": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "diplomacy": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "disableDevice": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "disguise": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "escapeArtist": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "fly": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "handleAnimal": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "heal": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "intimidate": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "knowArcana": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "knowDungeon": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
-    "knowEngine": {
+    "knowEngineering": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
-    "knowGeo": {
+    "knowGeography": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "knowHistory": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "knowLocal": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "knowNature": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "knowNobility": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "knowPlanes": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "knowReligion": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "linguistics": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "perception": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "perform": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "profession": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "ride": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "senseMotive": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "sleightHand": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "spellcraft": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "stealth": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "survival": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "swim": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     },
     "useMagicDevice": {
       "score": 0,
       "ranks": 0,
       "misc": 0,
-      "classSkill": true
+      "classSkill": false
     }
   },
   "hp": {
     "current": "",
     "maxHp": "",
-    "nonLethalDmg": ""
+    "nonLethalDmg": 0
   },
   "dr": "",
-  "hd": "",
   "initiative": {
-    "value": "",
-    "misc": ""
+    "value": 0,
+    "misc": 0
+  },
+  "saveThrows": {
+    "fortitude": {
+      "value": 0,
+      "misc": 0
+    },
+    "reflex": {
+      "value": 0,
+      "misc": 0
+    },
+    "will": {
+      "value": 0,
+      "misc": 0
+    }
   },
   "speed": {
     "base": "",

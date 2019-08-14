@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import { Grid, Header } from "semantic-ui-react";
-import { CharacterCreator } from "./components/CharacterCreator";
-import PageHeader from "./components/PageHeader";
+import PageHeader from "./creator/PageHeader";
+import CharacterCreator from "./creator/CharacterCreator";
 
 function App() {
   return (
