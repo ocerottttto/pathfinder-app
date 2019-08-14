@@ -1,5 +1,9 @@
 import React from "react";
-import { Segment, Form } from "semantic-ui-react";
+import { Segment, Form, TransitionablePortal } from "semantic-ui-react";
+import { connect } from 'react-redux'
+import { setProperty } from '../ducks/character.js'
+
+import SetClass from "./SetClass";
 
 const xpRates = [
   { key: "f", value: "fast", text: "Fast" },
@@ -26,20 +30,22 @@ const alignments = [
 
 const deities = [{ key: "0", value: "0", text: "Test" }];
 
-export class BasicInfo extends React.Component {
+class BasicInfo extends React.Component {
   constructor(props) {
     super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.state = { openSetCharacter: false };
+
+    this.handleChange = (event, data) => {
+      const name = data !== undefined ? data.name : event.target.name;
+      const value = data !== undefined ? data.value : event.target.value;
+      this.props.sendChange(name, value);
+    };
   }
 
-  handleChange = event => {
-    this.props.sendChange(event.target.name, event.target.value);
-  };
-
-  handleSelectChange = (event, data) => {
-    this.props.sendChange(data.name, event.target.textContent);
-  };
+  componentDidUpdate(prevProps) {
+    if (this.props.character.class !== prevProps.character.class)
+      this.setState({ ...this.state, openSetCharacter: false });
+  }
 
   render() {
     return (
@@ -49,6 +55,7 @@ export class BasicInfo extends React.Component {
             fluid
             label="Name"
             name="name"
+            defaultValue={this.props.character.name}
             onBlur={this.handleChange}
             width={3}
           />
@@ -56,6 +63,7 @@ export class BasicInfo extends React.Component {
             fluid
             label="Player"
             name="player"
+            defaultValue={this.props.character.player}
             onBlur={this.handleChange}
             width={3}
           />
@@ -63,6 +71,7 @@ export class BasicInfo extends React.Component {
             fluid
             label="Campaign"
             name="campaign"
+            defaultValue={this.props.character.campaign}
             onBlur={this.handleChange}
             width={3}
           />
@@ -70,7 +79,8 @@ export class BasicInfo extends React.Component {
             fluid
             label="XP Rate"
             name="xpRate"
-            onChange={this.handleSelectChange}
+            defaultValue={this.props.character.xpRate}
+            onChange={this.handleChange}
             options={xpRates}
             placeholder="Normal"
             width={2}
@@ -79,7 +89,8 @@ export class BasicInfo extends React.Component {
             fluid
             label="Gender"
             name="gender"
-            onChange={this.handleSelectChange}
+            defaultValue={this.props.character.gender}
+            onChange={this.handleChange}
             options={genders}
             width={2}
           />
@@ -87,7 +98,8 @@ export class BasicInfo extends React.Component {
             fluid
             label="Alignment"
             name="alignment"
-            onChange={this.handleSelectChange}
+            defaultValue={this.props.character.alignment}
+            onChange={this.handleChange}
             search
             selection
             options={alignments}
@@ -99,6 +111,7 @@ export class BasicInfo extends React.Component {
             fluid
             label="Race"
             name="race"
+            defaultValue={this.props.character.race}
             onBlur={this.handleChange}
             icon={{ name: "search", circular: true, link: true }}
             width={4}
@@ -107,22 +120,32 @@ export class BasicInfo extends React.Component {
             fluid
             label="Class"
             name="class"
-            onBlur={this.handleChange}
+            value={this.props.character.class.name}
+            onClick={() => this.setState({ ...this.state, openSetCharacter: true })}
             icon={{ name: "search", circular: true, link: true }}
             width={6}
           />
+          <TransitionablePortal
+            transition={{ animation: 'scale', duration: 500 }}
+            open={this.state.openSetCharacter}
+          >
+            <SetClass />
+          </TransitionablePortal>
           <Form.Input
             fluid
             label="Level"
             name="lvl"
+            type='number'
+            defaultValue={this.props.character.level}
             onBlur={this.handleChange}
-            placeholder="1"
             width={2}
           />
           <Form.Input
             fluid
             label="Current XP"
             name="currentXp"
+            type='number'
+            defaultValue={this.props.character.currentXp}
             onBlur={this.handleChange}
             placeholder="0"
             width={2}
@@ -131,6 +154,7 @@ export class BasicInfo extends React.Component {
             fluid
             label="Next Level XP"
             name="nextLvlXp"
+            value={this.props.character.nextLvlXp}
             onBlur={this.handleChange}
             readOnly
             width={2}
@@ -141,6 +165,8 @@ export class BasicInfo extends React.Component {
             fluid
             label="Age"
             name="age"
+            type='number'
+            defaultValue={this.props.character.age}
             onBlur={this.handleChange}
             placeholder="years"
             width={2}
@@ -158,6 +184,8 @@ export class BasicInfo extends React.Component {
             fluid
             label="Height"
             name="height"
+            type='number'
+            defaultValue={this.props.character.height}
             onBlur={this.handleChange}
             placeholder="ft."
             width={2}
@@ -166,6 +194,8 @@ export class BasicInfo extends React.Component {
             fluid
             label="Weight"
             name="weight"
+            type='number'
+            defaultValue={this.props.character.weight}
             onBlur={this.handleChange}
             placeholder="lb."
             width={2}
@@ -174,6 +204,7 @@ export class BasicInfo extends React.Component {
             fluid
             label="Size"
             name="size"
+            value={this.props.character.size}
             onBlur={this.handleChange}
             readOnly
             width={2}
@@ -182,6 +213,7 @@ export class BasicInfo extends React.Component {
             fluid
             label="Hometown"
             name="hometown"
+            value={this.props.character.hometown}
             onBlur={this.handleChange}
             width={3}
           />
@@ -189,6 +221,7 @@ export class BasicInfo extends React.Component {
             fluid
             label="Deity"
             name="deity"
+            value={this.props.character.deity}
             onBlur={this.handleChange}
             search
             selection
@@ -200,3 +233,15 @@ export class BasicInfo extends React.Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { character: state.character };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    sendChange: (name, value) => dispatch(setProperty(name, value))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BasicInfo);
