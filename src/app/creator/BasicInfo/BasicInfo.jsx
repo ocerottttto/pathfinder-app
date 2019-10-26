@@ -1,9 +1,10 @@
 import React from "react";
-import { Segment, Form, TransitionablePortal } from "semantic-ui-react";
-import { connect } from 'react-redux'
-import { setProperty } from '../ducks/character.js'
+import { setProperty } from "../ducks/character.js";
+import { useDispatch, useSelector } from "react-redux";
+import { Segment, Form, Icon } from "semantic-ui-react";
 
-import SetClass from "./SetClass";
+// import SetRace from "./SetRace";
+// import SetClass from "./SetClass";
 
 const xpRates = [
   { key: "f", value: "fast", text: "Fast" },
@@ -30,218 +31,276 @@ const alignments = [
 
 const deities = [{ key: "0", value: "0", text: "Test" }];
 
-class BasicInfo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { openSetCharacter: false };
+export default function BasicInfo(props) {
+  // componentDidUpdate(prevProps) {
+  //   if (character.race !== prevProps.character.race)
+  //     this.setState({ ...this.state, openSetRace: false });
+  //   if (character.class !== prevProps.character.class)
+  //     this.setState({ ...this.state, openSetCharacter: false });
+  // }
 
-    this.handleChange = (event, data) => {
-      const name = data !== undefined ? data.name : event.target.name;
-      const value = data !== undefined ? data.value : event.target.value;
-      this.props.sendChange(name, value);
-    };
+  const dispatch = useDispatch();
+  const character = useSelector(state => state.character);
+
+  function handleChange(event) {
+    dispatch(setProperty(event.target.name, event.target.value));
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.character.class !== prevProps.character.class)
-      this.setState({ ...this.state, openSetCharacter: false });
-  }
-
-  render() {
-    return (
-      <Segment basic>
-        <Form.Group>
-          <Form.Input
-            fluid
-            label="Name"
-            name="name"
-            defaultValue={this.props.character.name}
-            onBlur={this.handleChange}
-            width={3}
-          />
-          <Form.Input
-            fluid
-            label="Player"
-            name="player"
-            defaultValue={this.props.character.player}
-            onBlur={this.handleChange}
-            width={3}
-          />
-          <Form.Input
-            fluid
-            label="Campaign"
-            name="campaign"
-            defaultValue={this.props.character.campaign}
-            onBlur={this.handleChange}
-            width={3}
-          />
-          <Form.Select
-            fluid
-            label="XP Rate"
-            name="xpRate"
-            defaultValue={this.props.character.xpRate}
-            onChange={this.handleChange}
-            options={xpRates}
-            placeholder="Normal"
-            width={2}
-          />
-          <Form.Select
-            fluid
-            label="Gender"
-            name="gender"
-            defaultValue={this.props.character.gender}
-            onChange={this.handleChange}
-            options={genders}
-            width={2}
-          />
-          <Form.Select
-            fluid
-            label="Alignment"
-            name="alignment"
-            defaultValue={this.props.character.alignment}
-            onChange={this.handleChange}
-            search
-            selection
-            options={alignments}
-            width={3}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Input
-            fluid
-            label="Race"
-            name="race"
-            defaultValue={this.props.character.race}
-            onBlur={this.handleChange}
-            icon={{ name: "search", circular: true, link: true }}
-            width={4}
-          />
-          <Form.Input
-            fluid
-            label="Class"
-            name="class"
-            value={this.props.character.class.name}
-            onClick={() => this.setState({ ...this.state, openSetCharacter: true })}
-            icon={{ name: "search", circular: true, link: true }}
-            width={6}
-          />
-          <TransitionablePortal
-            transition={{ animation: 'scale', duration: 500 }}
-            open={this.state.openSetCharacter}
+  return (
+    <Segment basic>
+      <Form.Group>
+        <Form.Input
+          fluid
+          label="Name"
+          name="name"
+          defaultValue={character.name}
+          onBlur={handleChange}
+          width={3}
+        />
+        <Form.Input
+          fluid
+          label="Player"
+          name="player"
+          defaultValue={character.player}
+          onBlur={handleChange}
+          width={3}
+        />
+        <Form.Input
+          fluid
+          label="Campaign"
+          name="campaign"
+          defaultValue={character.campaign}
+          onBlur={handleChange}
+          width={3}
+        />
+        <Form.Select
+          fluid
+          label="XP Rate"
+          name="xpRate"
+          defaultValue={character.xpRate}
+          onChange={handleChange}
+          options={xpRates}
+          placeholder="Normal"
+          width={2}
+        />
+        <Form.Select
+          fluid
+          label="Gender"
+          name="gender"
+          defaultValue={character.gender}
+          onChange={handleChange}
+          options={genders}
+          width={2}
+        />
+        <Form.Select
+          fluid
+          label="Alignment"
+          name="alignment"
+          defaultValue={character.alignment}
+          onChange={handleChange}
+          search
+          selection
+          options={alignments}
+          width={3}
+        />
+      </Form.Group>
+      <Form.Group>
+        {/*<TransitionablePortal
+          transition={{ animation: "scale", duration: 500 }}
+          closeOnTriggerClick
+          openOnTriggerClick
+          trigger={
+            <Form.Input
+              fluid
+              label="Race"
+              name="race"
+              value={character.race.name}
+              icon={
+                <Icon
+                  name="search"
+                  circular
+                  link
+                  error={
+                    character.class.name === "" ? "true" : "false"
+                  }
+                  onClick={() =>
+                    this.setState({ ...this.state, openSetRace: true })
+                  }
+                />
+              }
+              width={4}
+              readOnly
+            />
+          }
+        >
+          <Segment
+            style={{
+              left: "15%",
+              top: "10%",
+              right: "15%",
+              bottom: "10%",
+              position: "fixed",
+              zIndex: 1000
+            }}
+          >
+            <SetRace />
+          </Segment>
+        </TransitionablePortal>
+        <TransitionablePortal
+          transition={{ animation: "scale", duration: 500 }}
+          closeOnTriggerClick
+          openOnTriggerClick
+          trigger={
+            <Form.Input
+              fluid
+              label="Class"
+              name="class"
+              value={character.class.name}
+              icon={
+                <Icon
+                  name="search"
+                  circular
+                  link
+                  error={
+                    character.class.name === "" ? "true" : "false"
+                  }
+                  onClick={() =>
+                    this.setState({ ...this.state, openSetCharacter: true })
+                  }
+                />
+              }
+              width={6}
+              readOnly
+            />
+          }
+        >
+          <Segment
+            style={{
+              left: "15%",
+              top: "10%",
+              right: "15%",
+              bottom: "10%",
+              position: "fixed",
+              zIndex: 1000
+            }}
           >
             <SetClass />
-          </TransitionablePortal>
-          <Form.Input
-            fluid
-            label="Level"
-            name="lvl"
-            type='number'
-            defaultValue={this.props.character.level}
-            onBlur={this.handleChange}
-            width={2}
-          />
-          <Form.Input
-            fluid
-            label="Current XP"
-            name="currentXp"
-            type='number'
-            defaultValue={this.props.character.currentXp}
-            onBlur={this.handleChange}
-            placeholder="0"
-            width={2}
-          />
-          <Form.Input
-            fluid
-            label="Next Level XP"
-            name="nextLvlXp"
-            value={this.props.character.nextLvlXp}
-            onBlur={this.handleChange}
-            readOnly
-            width={2}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Input
-            fluid
-            label="Age"
-            name="age"
-            type='number'
-            defaultValue={this.props.character.age}
-            onBlur={this.handleChange}
-            placeholder="years"
-            width={2}
-          />
-          <Form.Input
-            fluid
-            label="Age Group"
-            name="ageGroup"
-            value={this.props.character.ageGroup}
-            onBlur={this.handleChange}
-            readOnly
-            width={2}
-          />
-          <Form.Input
-            fluid
-            label="Height"
-            name="height"
-            type='number'
-            defaultValue={this.props.character.height}
-            onBlur={this.handleChange}
-            placeholder="ft."
-            width={2}
-          />
-          <Form.Input
-            fluid
-            label="Weight"
-            name="weight"
-            type='number'
-            defaultValue={this.props.character.weight}
-            onBlur={this.handleChange}
-            placeholder="lb."
-            width={2}
-          />
-          <Form.Input
-            fluid
-            label="Size"
-            name="size"
-            value={this.props.character.size}
-            onBlur={this.handleChange}
-            readOnly
-            width={2}
-          />
-          <Form.Input
-            fluid
-            label="Hometown"
-            name="hometown"
-            value={this.props.character.hometown}
-            onBlur={this.handleChange}
-            width={3}
-          />
-          <Form.Select
-            fluid
-            label="Deity"
-            name="deity"
-            value={this.props.character.deity}
-            onBlur={this.handleChange}
-            search
-            selection
-            options={deities}
-            width={3}
-          />
-        </Form.Group>
-      </Segment>
-    );
-  }
+          </Segment>
+          </TransitionablePortal>*/}
+        {/* <Form.Input
+          fluid
+          label="Level"
+          name="level"
+          type="number"
+          value={character.level}
+          icon={
+            <Icon
+              name="plus"
+              disabled={!this.state.canLevelUp}
+              bordered
+              color={this.state.canLevelUp ? "yellow" : null}
+              link
+              onClick={() => {
+                // this.setState({ ...this.state, canLevelUp: false });
+                // this.handleChange(
+                //   "level",
+                //   parseInt(character.level) + 1
+                // );
+              }}
+            />
+          }
+          width={2}
+          readOnly
+        /> */}
+        <Form.Input
+          fluid
+          label="Current XP"
+          name="currentXp"
+          type="number"
+          defaultValue={character.currentXp}
+          onBlur={handleChange}
+          placeholder={0}
+          width={2}
+        />
+        <Form.Input
+          fluid
+          label="Next Level XP"
+          name="nextLvlXp"
+          value={character.nextLvlXp}
+          onBlur={handleChange}
+          readOnly
+          width={2}
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Input
+          fluid
+          label="Age"
+          name="age"
+          type="number"
+          defaultValue={character.age}
+          onBlur={handleChange}
+          placeholder="years"
+          width={2}
+        />
+        <Form.Input
+          fluid
+          label="Age Group"
+          name="ageGroup"
+          value={character.ageGroup}
+          onBlur={handleChange}
+          readOnly
+          width={2}
+        />
+        <Form.Input
+          fluid
+          label="Height"
+          name="height"
+          type="number"
+          defaultValue={character.height}
+          onBlur={handleChange}
+          placeholder="ft."
+          width={2}
+        />
+        <Form.Input
+          fluid
+          label="Weight"
+          name="weight"
+          type="number"
+          defaultValue={character.weight}
+          onBlur={handleChange}
+          placeholder="lb."
+          width={2}
+        />
+        <Form.Input
+          fluid
+          label="Size"
+          name="size"
+          value={character.size}
+          onBlur={handleChange}
+          readOnly
+          width={2}
+        />
+        <Form.Input
+          fluid
+          label="Hometown"
+          name="hometown"
+          value={character.hometown}
+          onBlur={handleChange}
+          width={3}
+        />
+        <Form.Select
+          fluid
+          label="Deity"
+          name="deity"
+          value={character.deity}
+          onBlur={handleChange}
+          search
+          selection
+          options={deities}
+          width={3}
+        />
+      </Form.Group>
+    </Segment>
+  );
 }
-
-function mapStateToProps(state) {
-  return { character: state.character };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    sendChange: (name, value) => dispatch(setProperty(name, value))
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(BasicInfo);

@@ -1,10 +1,10 @@
-// character.js
-
+import { calculateInititative } from "../../shared/Utils";
 import characterModel from "./CharacterModel.json";
 
 // Actions
 const SET_CHARACTER = "SET_CHARACTER";
 const SET_PROPERTY = "SET_PROPERTY";
+const SET_INITITATIVE = "SET_INITITATIVE";
 const SET_CLASSES = "SET_CLASSES";
 const SET_ABILITY = "SET_ABILITY";
 const SET_SKILL = "SET_SKILLS";
@@ -19,46 +19,92 @@ const initialState = { character: characterModel };
 
 export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case (SET_CHARACTER):
+    case SET_CHARACTER:
       return Object.assign({}, state, {
         character: action.payload
       });
-    case (SET_PROPERTY):
+    case SET_PROPERTY:
+      let name = "",
+        value = "";
+      if (action.value !== "") {
+        // [COM] Distinguish between int and string value
+        if (!isNaN(parseInt(action.value)))
+          action.value = parseInt(action.value);
+        // [COM] Manage nested objects
+        let property = action.name.split("-");
+        if (property.length > 1) {
+          name = property[0];
+          value = {
+            ...state.character[property[0]],
+            [property[1]]: action.value
+          };
+        } else {
+          name = property[0];
+          value = action.value;
+        }
+        return Object.assign({}, state, {
+          ...state,
+          character: { ...state.character, [name]: value }
+        });
+      }
+      return state;
+    case SET_INITITATIVE:
       return Object.assign({}, state, {
-        ...state, character: { ...state.character, [action.name]: action.value }
+        ...state,
+        character: {
+          ...state.character,
+          initiative: {
+            ...state.character.initiative,
+            value: calculateInititative(
+              state.character.abilities.dex.mod,
+              state.character.initiative.misc
+            )
+          }
+        }
       });
-    case (SET_CLASSES):
-      return Object.assign({}, state, {
-        classes: action.payload
-      });
-    case (SET_ABILITY):
-      return Object.assign({}, state, {
-        ...state, character: { ...state.character, abilities: { ...state.character.abilities, [action.name]: action.value } }
-      });
-    case (SET_SKILL):
-      return Object.assign({}, state, {
-        ...state, character: { ...state.character, skills: { ...state.character.skills, [action.name]: action.value } }
-      });
-    case (SET_ABILITIESINFO):
+    // case SET_CLASSES:
+    //   return Object.assign({}, state, {
+    //     classes: action.payload
+    //   });
+    // case SET_ABILITY:
+    //   return Object.assign({}, state, {
+    //     ...state,
+    //     character: {
+    //       ...state.character,
+    //       abilities: {
+    //         ...state.character.abilities,
+    //         [action.name]: action.value
+    //       }
+    //     }
+    //   });
+    // case SET_SKILL:
+    //   return Object.assign({}, state, {
+    //     ...state,
+    //     character: {
+    //       ...state.character,
+    //       skills: { ...state.character.skills, [action.name]: action.value }
+    //     }
+    //   });
+    case SET_ABILITIESINFO:
       return Object.assign({}, state, {
         abilitiesInfo: action.payload
       });
-    case (SET_SKILLSINFO):
-      return Object.assign({}, state, {
-        skillsInfo: action.payload
-      });
-    case (SET_TRAITS):
-      return Object.assign({}, state, {
-        traits: action.payload
-      });
-    case (SET_FEATS):
-      return Object.assign({}, state, {
-        feats: action.payload
-      });
-    case (SET_SAVETHROWSINFO):
-      return Object.assign({}, state, {
-        saveThrowsInfo: action.payload
-      });
+    // case SET_SKILLSINFO:
+    //   return Object.assign({}, state, {
+    //     skillsInfo: action.payload
+    //   });
+    // case SET_TRAITS:
+    //   return Object.assign({}, state, {
+    //     traits: action.payload
+    //   });
+    // case SET_FEATS:
+    //   return Object.assign({}, state, {
+    //     feats: action.payload
+    //   });
+    // case SET_SAVETHROWSINFO:
+    //   return Object.assign({}, state, {
+    //     saveThrowsInfo: action.payload
+    //   });
     default:
       return state;
   }
@@ -71,6 +117,10 @@ export function setCharacter(payload) {
 
 export function setProperty(name, value) {
   return { type: SET_PROPERTY, name, value };
+}
+
+export function setInitiative(name, value) {
+  return { type: SET_INITITATIVE, name, value };
 }
 
 export function setClasses(payload) {

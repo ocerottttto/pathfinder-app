@@ -3,12 +3,14 @@ import { Form, Table } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { setAbility } from "../ducks/character";
 
+import { calculateAbilityScore, calculateAbilityMod } from "../../shared/Utils"
+
 class AbilitiesTableRow extends React.Component {
     componentDidUpdate(prevPros) {
-        let score = this.calculateScore(this.props.ability);
+        let score = calculateAbilityScore(this.props.ability);
         if (score !== prevPros.ability.score)
             this.props.sendChange(this.props.abilityName, {
-                ...this.props.ability, score: score, mod: this.calculateMod(score)
+                ...this.props.ability, score: score, mod: calculateAbilityMod(score)
             });
     }
 
@@ -17,17 +19,6 @@ class AbilitiesTableRow extends React.Component {
             this.props.sendChange(this.props.abilityName, {
                 ...this.props.ability, [name]: parseInt(value)
             });
-    }
-
-    calculateScore(ability) {
-        let score = ability.base + ability.misc;
-        return isNaN(score) ? "" : parseInt(score);
-    }
-
-    calculateMod(score) {
-        let mod = (score - 10) / 2;
-        mod = mod > 0 ? mod | 0 : mod.toFixed(0);
-        return isNaN(mod) ? "" : parseInt(mod);
     }
 
     render() {
