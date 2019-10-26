@@ -1,0 +1,70 @@
+{
+    "id": 1,
+    "level": 1,
+    "info": {
+        "name": "Giubolo",
+        "playerid": 3,
+        "campaignid": 1,
+        "xprate": 1,
+        "gender": "m",
+        "alignment": "ng",
+        "currentxp": 0,
+        "nextlvlxp": 1000,
+        "age": null,
+        "agegroup": "Adult",
+        "height": null,
+        "weight": null,
+        "sizegroup": "Medium",
+        "hometownid": null,
+        "deity": null
+    },
+    "stats": {
+        "hp": {
+            "currenthp": 0,
+            "maxhp": 0,
+            "maxhpmod": 0,
+            "nonlethaldmg": 0,
+            "spellres": 0,
+            "dr": 0,
+            "hd": "d10"
+        },
+        "initiative": {
+            "initiative": 0,
+            "initiativemisc": 0
+        },
+        "savethrows": {
+            "savefort": {
+                "savefort": 0,
+                "savefortmisc": 0
+            },
+            "saveref": {
+                "saveref": 0,
+                "saverefmisc": 0
+            },
+            "savewill": {
+                "savewill": 0,
+                "savewillmisc": 0
+            }
+        },
+        "attackbonuses": {
+            "melee-ab": {
+                "meleeab": 0,
+                "meleeabmisc": 0
+            },
+            "cmb": {
+                "cmb": 0,
+                "cmbmisc": 0
+            },
+            "ranged-ab": {
+                "rangedab": 0,
+                "rangedabmisc": 0
+            }
+        },
+        "skills": {
+            "skillranks": {
+                "skillranks": 2,
+                "skillrankbonus": 2
+            }
+        }
+    }
+}

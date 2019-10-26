@@ -7,6 +7,8 @@
   "gender": "",
   "alignment": "",
   "race": {
+    "name": "",
+    "desc": "",
     "raceTraits": []
   },
   "class": {
@@ -16,25 +18,24 @@
     "archetypes": [],
     "classSkills": [],
     "proficiencies": [],
+    "skillRanksBonus": 0,
     "startWealth": 0,
     "alligment": [],
-    "stats": [
-      {
-        "BAB": 0,
-        "baseSave": {
-          "fortitude": 0,
-          "reflex": 0,
-          "will": 0
-        },
-        "special": []
-      }
-    ]
+    "stats": {
+      "BAB": 0,
+      "baseSave": {
+        "fortitude": 0,
+        "reflex": 0,
+        "will": 0
+      },
+      "special": []
+    }
   },
   "traits": [],
   "feats": [],
   "level": 1,
   "currentXp": 0,
-  "nextLvlXp": "",
+  "nextLvlXp": 1000,
   "age": "",
   "ageGroup": "",
   "height": "",
@@ -293,11 +294,13 @@
     }
   },
   "hp": {
-    "current": "",
-    "maxHp": "",
-    "nonLethalDmg": 0
+    "current": 0,
+    "maxHp": 0,
+    "maxHpMod": 0,
+    "nonLethalDmg": 0,
+    "dr": 0,
+    "spellRes": 0
   },
-  "dr": "",
   "initiative": {
     "value": 0,
     "misc": 0

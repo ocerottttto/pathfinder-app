@@ -3,9 +3,11 @@ import { Form, Table } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { setSkill } from "../ducks/character";
 
+import { calculateSkillScore } from "../../shared/Utils"
+
 class SkillsTableRow extends React.Component {
     componentDidUpdate(prevPros) {
-        let score = this.calculateScore(this.props.mod, this.props.skill);
+        let score = calculateSkillScore(this.props.mod, this.props.skill);
         if (score !== prevPros.skill.score)
             this.handleChange("score", score);
     }
@@ -17,16 +19,11 @@ class SkillsTableRow extends React.Component {
             });
     }
 
-    calculateScore(mod, skill) {
-        let score = parseInt(mod) + skill.ranks + skill.misc + (skill.ranks >= 1 && skill.classSkill ? 3 : 0);
-        return isNaN(score) ? 0 : parseInt(score);
-    }
-
     render() {
         const handleChange = event => {
             this.handleChange(event.target.name, event.target.value);
         }
-        
+
         return (
             <Table.Row textAlign='center' >
                 <Table.Cell>{this.props.skillInfo.text}</Table.Cell>

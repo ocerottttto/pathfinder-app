@@ -65,7 +65,17 @@ class TraitsTable extends React.Component {
                 </Table.Row>
               );
             })}
-            {this.props.traits.length === 0 && this.props.feats.length === 0 && this.props.racialTraits.length === 0 && (
+            {Object.keys(this.props.special).map((name, i) => {
+              return (
+                <Table.Row key={i}>
+                  <Table.Cell>{this.props.special[name]}</Table.Cell>
+                  <Table.Cell>{this.props.special[name]}</Table.Cell>
+                  {/* <Table.Cell>{this.props.special[name].desc}</Table.Cell> */}
+                  <Table.Cell textAlign='center'>S</Table.Cell>
+                </Table.Row>
+              );
+            })}
+            {this.props.traits.length === 0 && this.props.feats.length === 0 && this.props.racialTraits.length === 0 && this.props.special.length === 0 && (
               <Table.Row>
                 <Table.Cell colSpan='3'><i>No traits/feats</i></Table.Cell>
               </Table.Row>
@@ -101,7 +111,7 @@ class TraitsTable extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { traits: state.character.traits, feats: state.character.feats, racialTraits: {}/*state.character.race.raceTraits*/ };
+  return { traits: state.character.traits, feats: state.character.feats, racialTraits: {}/*state.character.race.raceTraits*/, special: state.character.class.stats.special };
 }
 
 export default connect(mapStateToProps)(TraitsTable);

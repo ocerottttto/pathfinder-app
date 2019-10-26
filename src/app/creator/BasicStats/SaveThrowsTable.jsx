@@ -3,6 +3,8 @@ import { Form, Table } from "semantic-ui-react";
 import { connect } from 'react-redux';
 import { setProperty } from "../ducks/character.js"
 
+import { calculateSaveThrow } from "../../shared/Utils"
+
 class SaveThrowsTable extends React.Component {
     handleChange(name, value) {
         if (value !== "") {
@@ -12,11 +14,6 @@ class SaveThrowsTable extends React.Component {
                 }
             });
         }
-    }
-
-    calculateTotal(baseSave, classBonus, abilityMod, magicMod, misc) {
-        let value = baseSave + classBonus + abilityMod + magicMod + misc;
-        return isNaN(value) ? 0 : parseInt(value);
     }
 
     render() {
@@ -39,10 +36,10 @@ class SaveThrowsTable extends React.Component {
                     {Object.keys(this.props.saveThrows).map((name, i) => {
                         let saveThrow = this.props.saveThrows[name];
                         let saveThrowInfo = this.props.saveThrowsInfo[name];
-                        let baseSave = this.props.classStats[this.props.level - 1].baseSave[name];
+                        let baseSave = this.props.classStats.baseSave[name];
                         let mod = this.props.abilities[saveThrowInfo.ability].mod;
 
-                        let total = this.calculateTotal(baseSave, 0, mod, 0, saveThrow.misc);
+                        let total = calculateSaveThrow(baseSave, 0, mod, 0, saveThrow.misc);
                         if (total !== saveThrow.value) {
                             this.handleChange(name, parseInt(total));
                         }

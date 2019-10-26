@@ -2,6 +2,7 @@ import React from "react";
 import "./SkillsTable.css";
 import { Segment, Table } from "semantic-ui-react";
 import { connect } from "react-redux";
+import { calculateSkillRanks } from "../../shared/Utils"
 
 import SkillsTableRow from "./SkillsTableRow";
 
@@ -11,8 +12,9 @@ class SkillsTable extends React.Component {
       <Segment basic>
         <Table compact="very" celled collapsing style={{ width: "100%" }}>
           <Table.Header>
-            <Table.Row>
-              <Table.HeaderCell colSpan='9'>Skills</Table.HeaderCell>
+            <Table.Row textAlign='center'>
+              <Table.HeaderCell colSpan='7'>Skills</Table.HeaderCell>
+              <Table.HeaderCell colSpan='3' className="input">Skill Ranks: {calculateSkillRanks(this.props.skillRanksBonus, this.props.abilities.int.mod, 0)}</Table.HeaderCell>
             </Table.Row>
             <Table.Row textAlign='center'>
               <Table.HeaderCell width="2">Name</Table.HeaderCell>
@@ -47,7 +49,10 @@ class SkillsTable extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { skillsInfo: state.skillsInfo, skills: state.character.skills, abilities: state.character.abilities, classSkills: state.character.class.classSkills };
+  return {
+    skillsInfo: state.skillsInfo, skills: state.character.skills, abilities: state.character.abilities, classSkills: state.character.class.classSkills,
+    skillRanks: state.character.skillRanks, skillRanksBonus: state.character.class.skillRanksBonus
+  };
 }
 
 export default connect(mapStateToProps)(SkillsTable);
