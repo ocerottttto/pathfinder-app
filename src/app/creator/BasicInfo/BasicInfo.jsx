@@ -1,7 +1,7 @@
 import React from "react";
-import { setProperty } from "../ducks/character.js";
 import { useDispatch, useSelector } from "react-redux";
-import { Segment, Form, Icon } from "semantic-ui-react";
+import { setProperty } from "../ducks/character.js";
+import { Segment, Form } from "semantic-ui-react";
 
 // import SetRace from "./SetRace";
 // import SetClass from "./SetClass";
