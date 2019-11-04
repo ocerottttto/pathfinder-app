@@ -89,10 +89,10 @@ export default function reducer(state = initialState, action = {}) {
       return Object.assign({}, state, {
         abilitiesInfo: action.payload
       });
-    // case SET_SKILLSINFO:
-    //   return Object.assign({}, state, {
-    //     skillsInfo: action.payload
-    //   });
+    case SET_SKILLSINFO:
+      return Object.assign({}, state, {
+        skillsInfo: action.payload
+      });
     // case SET_TRAITS:
     //   return Object.assign({}, state, {
     //     traits: action.payload

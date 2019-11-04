@@ -1,6 +1,7 @@
 import React from "react";
 import "./AbilitiesTable.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setProperty } from "../ducks/character.js";
 import { Segment, Table } from "semantic-ui-react";
 
 import AbilitiesTableRow from "./AbilitiesTableRow";
@@ -28,7 +29,13 @@ import AbilitiesTableRow from "./AbilitiesTableRow";
 //   }
 
 export default function AbilitiesTable(props) {
+  const dispatch = useDispatch();
   const abilitiesInfo = useSelector(state => state.abilitiesInfo);
+  const abilities = useSelector(state => state.character.abilities);
+
+  function handleChange(event) {
+    dispatch(setProperty(event.target.name, event.target.value));
+  }
 
   return (
     <Segment basic>
@@ -54,6 +61,8 @@ export default function AbilitiesTable(props) {
                 key={i}
                 abilityName={name}
                 abilityInfo={abilitiesInfo[name]}
+                ability={abilities[name]}
+                handleChange={handleChange}
               />
             );
           })}

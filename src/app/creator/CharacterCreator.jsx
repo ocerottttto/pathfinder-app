@@ -1,12 +1,7 @@
 import React, { Suspense } from "react";
 import axios from "axios";
 // import { useDispatch } from "react-redux";
-import // setCharacter
-// setClasses,
-// setAbilitiesInfo
-// setSkillsInfo,
-// setSaveThrowsInfo
-"./ducks/character";
+// import { setCharacter } from "./ducks/character";
 import { Segment, Dimmer, Loader } from "semantic-ui-react";
 
 import { SemanticToastContainer, toast } from "react-semantic-toasts";
